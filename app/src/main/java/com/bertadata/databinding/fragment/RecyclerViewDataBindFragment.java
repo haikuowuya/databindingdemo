@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.bertadata.databinding.R;
+import com.bertadata.databinding.RecyclerItemClick;
 import com.bertadata.databinding.databinding.FragmentRecyclerViewDatabindBinding;
 import com.bertadata.databinding.databinding.RecyclerListItemBinding;
 import com.bertadata.databinding.model.UserItem;
@@ -64,7 +65,11 @@ public class RecyclerViewDataBindFragment extends Fragment
         for (int i = 0; i < 20; i++)
         {
             UserItem userItem = new UserItem();
-            userItem.imageUrl="http://ss.bdimg.com/static/superman/img/logo/bd_logo1_31bdc765.png";
+            userItem.imageUrl = "http://ss.bdimg.com/static/superman/img/logo/bd_logo1_31bdc765.png";
+            if (i % 2 == 0)
+            {
+                userItem.imageUrl = "http://t10.baidu.com/it/u=3234352491,3609361213&fm=80";
+            }
             userItem.userName = "**********" + i;
             userItem.password = "" + i;
             userItems.add(userItem);
@@ -92,7 +97,16 @@ public class RecyclerViewDataBindFragment extends Fragment
         @Override
         public void onBindViewHolder(UserItemViewHolder holder, int position)
         {
-            holder.bindDataToView(mUserItems.get(position));
+            final UserItem userItem = mUserItems.get(position);
+            holder.bindDataToView(userItem);
+            holder.onItemClick(new RecyclerItemClick()
+            {
+                @Override
+                public void onItemClick(View view)
+                {
+                    userItem.setImageUrl("http://t12.baidu.com/it/u=2694128012,964417476&fm=80");
+                }
+            });
         }
 
         @Override
@@ -114,8 +128,15 @@ public class RecyclerViewDataBindFragment extends Fragment
             public void bindDataToView(UserItem userItem)
             {
                 mRecyclerListItemBinding.setUserItem(userItem);
+
+            }
+
+            public void onItemClick(RecyclerItemClick itemClick)
+            {
+                mRecyclerListItemBinding.setOnItemClick(itemClick);
             }
 
         }
     }
+
 }

@@ -2,8 +2,7 @@ package com.bertadata.databinding.model;
 
 import android.databinding.BaseObservable;
 import android.databinding.Bindable;
-
-import com.bumptech.glide.Glide;
+import android.databinding.ObservableField;
 
 import java.io.Serializable;
 
@@ -16,11 +15,8 @@ import java.io.Serializable;
  **/
 public class UserItem extends BaseObservable implements Serializable
 {
-    @Bindable
     public String userName;
-    @Bindable
     public String password;
-    @Bindable
     public String imageUrl;
 
     public UserItem()
@@ -30,8 +26,8 @@ public class UserItem extends BaseObservable implements Serializable
 
     public UserItem(String userName, String password)
     {
-        this.userName = userName;
-        this.password = password;
+        this(userName, password, null);
+
     }
 
     public UserItem(String userName, String password, String imageUrl)
@@ -39,6 +35,24 @@ public class UserItem extends BaseObservable implements Serializable
         this.userName = userName;
         this.password = password;
         this.imageUrl = imageUrl;
+    }
+
+    @Bindable
+    public String getUserName()
+    {
+        return userName;
+    }
+
+    @Bindable
+    public String getPassword()
+    {
+        return password;
+    }
+
+    @Bindable
+    public String getImageUrl()
+    {
+        return imageUrl;
     }
 
     public void setUserName(String userName)
@@ -52,5 +66,11 @@ public class UserItem extends BaseObservable implements Serializable
     {
         this.password = password;
         notifyPropertyChanged(com.bertadata.databinding.BR.password);
+    }
+
+    public void setImageUrl(String imageUrl)
+    {
+        this.imageUrl = imageUrl;
+        notifyPropertyChanged(com.bertadata.databinding.BR.imageUrl);
     }
 }

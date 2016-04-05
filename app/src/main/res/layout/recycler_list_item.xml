@@ -8,20 +8,23 @@
 
         <import type="com.bertadata.databinding.model.UserItem"/>
 
-        <import type="com.bumptech.glide.Glide"/>
+        <import type="com.bertadata.databinding.RecyclerItemClick"/>
+
 
         <variable
             name="userItem"
             type="UserItem"/>
 
         <variable
-            name="glide"
-            type="Glide"/>
+            name="onItemClick"
+            type="RecyclerItemClick"/>
+
     </data>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="48dp"
+        android:onClick="@{onItemClick.onItemClick}"
         android:orientation="horizontal">
 
         <ImageView
@@ -33,6 +36,7 @@
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_weight="1"
+
             android:orientation="horizontal">
 
             <TextView
@@ -41,6 +45,7 @@
                 android:layout_weight="1"
                 android:gravity="center_vertical"
                 android:text="@{userItem.userName}"
+
                 tools:text="zhagnsan"/>
 
             <TextView

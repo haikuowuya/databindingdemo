@@ -130,7 +130,7 @@ public class DataBindFragment extends Fragment
             {
                 dataBind = (ViewDataBinding) convertView.getTag();
             }
-            dataBind.setVariable(com.bertadata.databinding.BR.userItem, mUserItems.get(position));
+          dataBind.setVariable(com.bertadata.databinding.BR.userItem, mUserItems.get(position));
 //            dataBind.executePendingBindings();
             return convertView;
         }
